@@ -12,8 +12,8 @@ export const NavBar = () => {
   return (
     <header>
       <Box sx={{ display: 'flex', position: 'static' }}>
-        <AppBar component="nav" >
-          <Toolbar >
+        <AppBar component="nav">
+          <Toolbar>
             <Navigation />
             {isLoggedIn ? <UserMenu /> : <AuthNav />}
           </Toolbar>

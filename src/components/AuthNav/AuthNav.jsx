@@ -25,7 +25,8 @@ export const AuthNav = () => {
         sx={{
           color: '#fff',
           '&.active': {
-            boxShadow: '2', textDecoration: 'underline'
+            boxShadow: '2',
+            textDecoration: 'underline',
           },
           '&:hover,:focus': { textDecoration: 'underline' },
         }}
@@ -39,7 +40,8 @@ export const AuthNav = () => {
         sx={{
           color: '#fff',
           '&.active': {
-            boxShadow: '2', textDecoration: 'underline'
+            boxShadow: '2',
+            textDecoration: 'underline',
           },
           '&:hover,:focus': { textDecoration: 'underline' },
         }}

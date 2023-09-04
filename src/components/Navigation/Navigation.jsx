@@ -3,23 +3,18 @@ import { NavLink } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 
-
-
-
-
 export const Navigation = () => {
   const { isLoggedIn } = useAuth();
 
-
   return (
     <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-      <Button 
+      <Button
         sx={{
           color: '#fff',
           '&.active': {
-             textDecoration: 'underline'
+            textDecoration: 'underline',
           },
-          '&:hover,:focus': {boxShadow: '2', textDecoration: 'underline' },
+          '&:hover,:focus': { boxShadow: '2', textDecoration: 'underline' },
         }}
         component={NavLink}
         to="/"
@@ -32,7 +27,7 @@ export const Navigation = () => {
           sx={{
             color: '#fff',
             '&.active': {
-               textDecoration: 'underline'
+              textDecoration: 'underline',
             },
             '&:hover,:focus': { boxShadow: '2', textDecoration: 'underline' },
           }}

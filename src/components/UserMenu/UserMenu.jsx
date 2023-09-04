@@ -17,8 +17,8 @@ export const UserMenu = () => {
         display: 'flex',
         gap: '16px',
         ml: 'auto',
-        justifyContent:'center',
-        alignItems: 'center'
+        justifyContent: 'center',
+        alignItems: 'center',
       }}
     >
       <Typography
@@ -34,11 +34,14 @@ export const UserMenu = () => {
         size="medium"
         type="button"
         onClick={handleLogOut}
-        sx={{ color: 'inherit', backgroundColor: 'rgba(0, 0, 0, 0.2)', '&:hover,:focus':{ boxShadow: '2', border: '1px solid white',} }}
+        sx={{
+          color: 'inherit',
+          backgroundColor: 'rgba(0, 0, 0, 0.2)',
+          '&:hover,:focus': { boxShadow: '2', border: '1px solid white' },
+        }}
       >
         Logout
       </Button>
-    
     </Box>
   );
 };

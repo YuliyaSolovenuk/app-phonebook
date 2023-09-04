@@ -2,9 +2,10 @@
 
 html {
   background-image: linear-gradient(
-    rgba(235, 242, 243, 0.1),
-    hsla(190, 14%, 92%, 0.5)
-  ), url(./image/dose-media-bU6JyhSI6zo-unsplash\ .jpg);
+      rgba(235, 242, 243, 0.1),
+      hsla(190, 14%, 92%, 0.5)
+    ),
+    url(./image/dose-media-bU6JyhSI6zo-unsplash\ .jpg);
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: fixed;
@@ -21,7 +22,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
 }
 
 code {

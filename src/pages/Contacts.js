@@ -19,14 +19,18 @@ export default function Contacts() {
   }, [dispatch]);
 
   return (
-    <Box component="div" sx={{
-      display: 'flex',
-       gap: '26px',
-      justifyContent: 'space-around',
-      alignItems: 'flex-start',
-      backgroundColor: 'hsla(190, 14%, 92%, 0.9)',
-      borderRadius: 3,
-      padding: 3,}}>
+    <Box
+      component="div"
+      sx={{
+        display: 'flex',
+        gap: '26px',
+        justifyContent: 'space-around',
+        alignItems: 'flex-start',
+        backgroundColor: 'hsla(190, 14%, 92%, 0.9)',
+        borderRadius: 3,
+        padding: 3,
+      }}
+    >
       <Box component="div">
         <Typography variant="h3" sx={{ my: 2, textAlign: 'center' }}>
           Phonebook

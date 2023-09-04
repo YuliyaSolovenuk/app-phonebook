@@ -20,10 +20,9 @@ export const ContactList = () => {
   );
 
   return (
-    <List sx={{ width: '100%',
-    maxWidth: 480,
-    overflow: 'auto',
-    maxHeight: 440,}}>
+    <List
+      sx={{ width: '100%', maxWidth: 480, overflow: 'auto', maxHeight: 440 }}
+    >
       {filteredContacts.map(contact => {
         return (
           <ListItem key={contact.id} sx={{ textAlign: 'center', fontSize: 24 }}>
