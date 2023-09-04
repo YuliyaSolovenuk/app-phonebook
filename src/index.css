@@ -1,5 +1,19 @@
 /* @import-normalize; bring in normalize.css styles */
 
+html {
+  background-image: linear-gradient(
+    rgba(235, 242, 243, 0.1),
+    hsla(190, 14%, 92%, 0.5)
+  ), url(./image/dose-media-bU6JyhSI6zo-unsplash\ .jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -7,7 +21,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #8db2f7;
+
 }
 
 code {

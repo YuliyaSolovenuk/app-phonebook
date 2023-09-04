@@ -1,7 +1,8 @@
-import css from './Filter.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFilter } from 'redux/selectors';
 import { onFiltredContacts } from 'redux/filterSlice';
+import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
 
 export const Filter = () => {
   const filter = useSelector(selectFilter);
@@ -14,16 +15,25 @@ export const Filter = () => {
   };
 
   return (
-    <label className={css.filterLabel}>
-      Find contacts by name
-      <input
-        className={css.filterInput}
+    <Box
+      component="div"
+      sx={{
+        '& .MuiTextField-root': { m: 1, width: '35ch' },
+        textAlign: 'center',
+      }}
+    >
+      <TextField
+        id="outlined"
+        label="Find contacts by name"
+        multiline
+        maxRows={4}
         type="text"
         name="filter"
         value={filter}
         onChange={handleChange}
         placeholder="Search contacts"
+        autoComplete="on"
       />
-    </label>
+    </Box>
   );
 };

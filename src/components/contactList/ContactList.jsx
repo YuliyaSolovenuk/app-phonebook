@@ -1,7 +1,14 @@
-import css from './ContactList.module.css';
+import IconButton from '@mui/material/IconButton';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction';
+import ListItemText from '@mui/material/ListItemText';
+
+// import css from './ContactList.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContactById } from 'redux/operations';
 import { selectContacts, selectFilter } from 'redux/selectors';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export const ContactList = () => {
   const contacts = useSelector(selectContacts);
@@ -13,22 +20,28 @@ export const ContactList = () => {
   );
 
   return (
-    <ul>
+    <List sx={{ width: '100%',
+    maxWidth: 480,
+    overflow: 'auto',
+    maxHeight: 440,}}>
       {filteredContacts.map(contact => {
         return (
-          <li key={contact.id} className={css.contactItem}>
+          <ListItem key={contact.id} sx={{ textAlign: 'center', fontSize: 24 }}>
             {contact.name}:&nbsp;
-            <span className={css.contactNumber}>{contact.number}</span>
-            <button
-              className={css.deleteButton}
-              type="button"
-              onClick={() => dispatch(deleteContactById(contact.id))}
-            >
-              Delete
-            </button>
-          </li>
+            <ListItemText>{contact.number}</ListItemText>
+            <ListItemSecondaryAction>
+              <IconButton
+                type="button"
+                edge="end"
+                aria-label="delete"
+                onClick={() => dispatch(deleteContactById(contact.id))}
+              >
+                <DeleteIcon fontSize="medium" />
+              </IconButton>
+            </ListItemSecondaryAction>
+          </ListItem>
         );
       })}
-    </ul>
+    </List>
   );
 };

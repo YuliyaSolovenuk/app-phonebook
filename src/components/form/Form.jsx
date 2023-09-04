@@ -1,9 +1,11 @@
 import Notiflix from 'notiflix';
-import css from './Form.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { addContact } from 'redux/operations';
 import { selectContacts } from 'redux/selectors';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 Notiflix.Notify.init({
   width: '320px',
@@ -51,42 +53,57 @@ export function Form() {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} className={css.formCover}>
-        <label className={css.formLabel}>
-          Name
-          <input
-            className={css.formInput}
-            type="text"
-            name="name"
-            value={name}
-            onChange={e => setName(e.target.value)}
-            pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-            required
-          />
-        </label>
-        <label className={css.formLabel}>
-          Number
-          <input
-            className={css.formInput}
-            type="tel"
-            name="number"
-            value={number}
-            onChange={e => setNumber(e.target.value)}
-            pattern="\+?\d{1,4}?[ .\-\s]?\(?\d{1,3}?\)?[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,9}"
-            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-            required
-          />
-        </label>
-        <button
-          className={css.formBtn}
+    <Box component="div" sx={{ textAlign: 'center' }}>
+      <Box
+        component="form"
+        onSubmit={handleSubmit}
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '16px',
+          justifyContent: 'center',
+          alignItems: 'center',
+          '& .MuiTextField-root': { m: 1, width: '35ch' },
+          textAlign: 'center',
+        }}
+        noValidate
+        autoComplete="on"
+      >
+        <TextField
+          id="outlined-name"
+          label="Name"
+          type="text"
+          name="name"
+          value={name}
+          onChange={e => setName(e.target.value)}
+          pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+          autoComplete="on"
+          required
+        />
+        <TextField
+          id="outlined-tel"
+          label="Number"
+          type="tel"
+          name="number"
+          value={number}
+          onChange={e => setNumber(e.target.value)}
+          pattern="\+?\d{1,4}?[ .\-\s]?\(?\d{1,3}?\)?[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,9}"
+          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+          autoComplete="on"
+          required
+        />
+
+        <Button
+          variant="outlined"
+          size="large"
           type="submit"
           disabled={!name || !number}
+          sx={{ color: 'inherit', my: 2, '&:hover,:focus': { boxShadow: '2' } }}
         >
           Add contact
-        </button>
-      </form>
-    </div>
+        </Button>
+      </Box>
+    </Box>
   );
 }

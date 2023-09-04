@@ -1,40 +1,68 @@
-import { Form } from './form/Form';
-import { Filter } from './filter/Filter';
-import { ContactList } from './contactList/ContactList';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts, selectError, selectIsLoading } from 'redux/selectors';
-import { useEffect } from 'react';
-import { fetchContacts } from 'redux/operations';
+import { Routes, Route } from 'react-router-dom';
+import { Layout } from './Layout';
+// import Home from 'pages/Home';
+// import Contacts from 'pages/Contacts';
+// import Login from 'pages/Login';
+// import Register from 'pages/Register';
+import { useDispatch } from 'react-redux';
+import { lazy, useEffect } from 'react';
+import { refreshUser } from 'redux/auth/operations';
+// import { useAuth } from 'hooks/useAuth';
+import { RestrictedRoute } from './RestrictedRoute';
+import { PrivateRoute } from './PrivateRoute';
+
+const Home = lazy(() => import('../pages/Home'));
+const Register = lazy(() => import('../pages/Register'));
+const Login = lazy(() => import('../pages/Login'));
+const Contacts = lazy(() => import('../pages/Contacts'));
+
+
 
 export function App() {
   const dispatch = useDispatch();
-  const  contacts = useSelector(selectContacts);
-  const isLoading = useSelector(selectIsLoading);
-  const  error = useSelector(selectError);
-
+  // const { isRefreshing } = useAuth();
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(refreshUser());
   }, [dispatch]);
 
   return (
+    // isRefreshing ? (
+    //   <b>Refreshing user...</b>
+    // ) :
     <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 24,
-        color: '#010101',
-      }}
-    >
-      <h2>Phonebook</h2>
-      <Form />
-      <h2>Contacts</h2>
-      <Filter />
-      {isLoading && <b>Loading tasks...</b>}
-      {error && <b>{error}</b>}
-      {contacts.length > 0 && <ContactList />}
+    style={{
+      height: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      fontSize: 24,
+      color: '#010101',
+    }}
+  >
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<Register />} />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<Login />} />
+          }
+        />
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute redirectTo="/login" component={<Contacts />} />
+          }
+        />
+      </Route>
+    </Routes>
     </div>
   );
 }
